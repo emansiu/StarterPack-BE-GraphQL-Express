@@ -19,6 +19,7 @@
 ## Get Started
 Just run the following in your terminal:
 ```
+npm install
 npm run devStart
 ```
 This is will get your server up and running on localhost:5000
