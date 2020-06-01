@@ -1,13 +1,22 @@
+require('dotenv').config() //<--enables you to access your environment variables. You have to create your own .env files and match the DB_USERNAME etc.
 const express = require('express');
 const expressGraphQL = require('express-graphql')
-const {
-    GraphQLSchema, GraphQLObjectType, GraphQLString
-} = require('graphql');
+const { GraphQLObjectType, GraphQLString, GraphQLBoolean, GraphQLSchema, GraphQLID, GraphQLFloat, GraphQLList, GraphQLNonNull } = require('graphql');
+const mongo = require('mongoose')
 const app = express()
+
+mongo.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_YOUR_OWN_CLUSTER}`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+
+mongo.connection.once('open', () => {
+    console.log('connected to database');
+})
 
 const schema = new GraphQLSchema({
     query: new GraphQLObjectType({
-        name: 'graphql schema test',
+        name: 'HelloWorldTest',
         fields: () => ({
             message: {
                 type: GraphQLString,
@@ -21,4 +30,9 @@ app.use('/graphql', expressGraphQL({
     schema,
     graphiql: true
 }))
-app.listen(5000, () => console.log('server running'))
+
+
+// // //-------------------GET PORT TO LISTEN ON-----------------
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => console.log(`running server on port ${PORT}`));
