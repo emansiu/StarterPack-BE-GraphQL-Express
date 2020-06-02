@@ -4,7 +4,7 @@ const Schema = mongo.Schema;
 const bookSchema = new Schema({
     id: Number,
     name: String,
-    authorId: Number
+    authorId: String
 });
 
 module.exports = mongo.model('Book', bookSchema);
