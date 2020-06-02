@@ -1,7 +1,4 @@
-const graphql = require('graphql');
-const axios = require('axios');
-
-// import all models
+// IMPORT THE CURRENT MODELS WE HAVE
 const Authors = require('../models/model_author_example');
 const Books = require('../models/model_book_example');
 
@@ -12,7 +9,8 @@ const AuthorType = new GraphQLObjectType({
     name: 'Author',
     description: 'This represents an author of a book',
     fields: () => ({
-        id: { type: GraphQLNonNull(GraphQLID) },
+        //_id because that's the way mongoose saves id's
+        _id: { type: GraphQLNonNull(GraphQLID) },
         name: { type: GraphQLNonNull(GraphQLString) },
         books: {
             type: new GraphQLList(BookType),
@@ -27,7 +25,8 @@ const BookType = new GraphQLObjectType({
     name: 'Book',
     description: 'This represents a book written by an author',
     fields: () => ({
-        id: { type: GraphQLNonNull(GraphQLID) },
+        //_id because that's the way mongoose saves id's
+        _id: { type: GraphQLNonNull(GraphQLID) },
         name: { type: GraphQLNonNull(GraphQLString) },
         authorId: { type: GraphQLNonNull(GraphQLID) },
         author: {
