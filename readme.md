@@ -2,7 +2,6 @@
 ## Back end server with GraphQL, Express, and MongoDB
 
 ### included library dependancies
-* axios (http requests)
 * express (server routes)
 * graphql (api and queries)
 * express-graphql (puts the two together)
