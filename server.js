@@ -6,8 +6,7 @@ const schema = require('./api/routes/schema');
 const mongo = require('mongoose')
 const app = express()
 
-
-
+//CONNECT TO YOUR OWN MONGODB CLUSTER
 mongo.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_YOUR_OWN_CLUSTER}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
