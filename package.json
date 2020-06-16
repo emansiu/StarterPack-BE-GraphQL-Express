@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "nodemon --exec babel-node server.js"
   },
   "repository": {
     "type": "git",
@@ -18,13 +19,17 @@
   },
   "homepage": "https://github.com/emansiu/StarterPack-BackEnd-GraphQL-Express#readme",
   "dependencies": {
+    "apollo-server-express": "^2.14.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-graphql": "^0.9.0",
     "graphql": "^15.0.0",
     "mongoose": "^5.9.16"
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
     "nodemon": "^2.0.4"
   },
   "engines": {
