@@ -3,7 +3,10 @@ const Schema = mongo.Schema;
 
 const bookSchema = new Schema({
     id: Number,
-    name: String,
+    name: {
+        type: String,
+        required: true
+    },
     authorId: String
 });
 

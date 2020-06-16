@@ -5,14 +5,36 @@ const Books = require('./models/model_book_example');
 export const resolvers = {
     Query: {
         hello: () => "a string",
-        books: () => Books.find()
+        books: () => Books.find(),
+        authors: () => Authors.find()
     },
     Mutation: {
-        addBook: (_, { name, authorId }) => {
+        addBook: (parent, { name, authorId }) => {
             const book = new Books({ name, authorId });
             return book.save();
         },
-        addAuthor: (_, { name }) => {
+        updateBook: (parent, { name, authorId }) => {
+            return Books.findOneAndUpdate(
+                {
+                    _id
+                },
+                {
+                    name
+                },
+                {
+                    new: true //<--true = after update, false = before update
+                    //upsert:true will create it if it doesn't exist
+                }
+            )
+        },
+        deleteBook: (parent, { _id }) => {
+            return Books.findOneAndDelete(
+                {
+                    _id
+                }
+            )
+        },
+        addAuthor: (parent, { name }) => {
             const author = new Authors({ name });
             return author.save();
         }

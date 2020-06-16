@@ -9,14 +9,19 @@ export const typeDefs = gql`
     type Book{
         _id: ID!
         name: String!
-        author:Author
+        authorId: ID
+        author: Author
     }
     type Query {
         hello: String!
         books:[Book!]!
+        authors:[Author!]
+
     }
     type Mutation {
-        addBook(name:String!):Book!
+        addBook(name:String!,authorId:String):Book!
+        updateBook(name:String!):Book
+        deleteBook(_id:ID!):Book
         addAuthor(name:String!):Author!
     }
 `;
